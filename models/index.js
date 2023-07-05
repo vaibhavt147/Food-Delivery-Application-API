@@ -14,7 +14,9 @@ sequelize
   .authenticate()
   .then(() => {
     console.log(
-      "Connection has been established successfully to " + env + " environment."
+      "Database Connection has been established successfully to " +
+        env +
+        " environment."
     );
   })
   .catch((err) => {
@@ -26,6 +28,10 @@ sequelize
     );
   });
 
+sequelize.sync().then(() => {
+  console.log("All models were synchronized successfully.");
+});
+
 fs.readdirSync(__dirname)
   .filter((file) => {
     return (
@@ -33,7 +39,10 @@ fs.readdirSync(__dirname)
     );
   })
   .forEach((file) => {
-    const model = sequelize["import"](path.join(__dirname, file));
+    const model = require(path.join(__dirname, file))(
+      sequelize,
+      Sequelize.DataTypes
+    );
     db[model.name] = model;
   });
 
