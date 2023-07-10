@@ -16,6 +16,19 @@ module.exports = function (sequelize, DataTypes) {
       fssailicense: {
         type: DataTypes.INTEGER,
       },
+      phonenumber: {
+        type: DataTypes.INTEGER,
+        unique: true,
+      },
+      emailid: {
+        type: DataTypes.STRING,
+        unique: true,
+        allowNull: false,
+      },
+      password: {
+        type: DataTypes.STRING,
+        allowNull: false,
+      },
     },
     {
       timestamps: true,
