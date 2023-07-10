@@ -9,13 +9,13 @@ const signup = async (req, res) => {
     const existingUser = await models.Partner.findOne({ email });
     if (existingUser) {
       return res
-        .setstatus(409)
+        .status(409)
         .send({ message: "User already exists. Please Log In" });
     }
-    encryptedUserPassword = await bcrypt.hash(password, 10);
-    
+    const encryptedUserPassword = await bcrypt.hash(password, 10);
   } catch (error) {
-    return res.setstatus(500).send({ message: "Internal Error" });
+    console.debug(error)
+    return res.status(500).send({ message: "Internal Error" });
   }
 };
 
