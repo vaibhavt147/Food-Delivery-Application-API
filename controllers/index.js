@@ -1,6 +1,7 @@
-const models = require("../models");
-const helloWorld = async (req, res) => {
-  return res.status(200).send({ message: "Hello World" });
+const healthcheck = async (req, res) => {
+  return res.status(200).send({
+    message: `The Server is running in ${process.env.NODE_ENV} environment`,
+  });
 };
 
-module.exports = { helloWorld };
+module.exports = { healthcheck };

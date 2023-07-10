@@ -1,7 +1,7 @@
 "use strict";
 module.exports = function (sequelize, DataTypes) {
-  const Restaurant = sequelize.define(
-    "restaurants",
+  const Partner = sequelize.define(
+    "partners",
     {
       id: {
         allowNull: false,
@@ -33,9 +33,9 @@ module.exports = function (sequelize, DataTypes) {
     {
       timestamps: true,
       freezeTableName: true,
-      tableName: "restaurants",
+      tableName: "partners",
     }
   );
 
-  return Restaurant;
+  return Partner;
 };
