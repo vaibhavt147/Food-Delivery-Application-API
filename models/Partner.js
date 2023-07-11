@@ -1,7 +1,7 @@
 "use strict";
 module.exports = function (sequelize, DataTypes) {
   const Partner = sequelize.define(
-    "partners",
+    "Partner",
     {
       id: {
         allowNull: false,
@@ -18,7 +18,6 @@ module.exports = function (sequelize, DataTypes) {
       },
       phonenumber: {
         type: DataTypes.INTEGER,
-        unique: true,
       },
       email: {
         type: DataTypes.STRING,

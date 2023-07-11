@@ -1,12 +1,9 @@
 const jwt = require("jsonwebtoken");
+const token_key = process.env.token_key || "development_token_key";
+const whitelistedAPIs = ["/partners/signup", "/partners/login"];
 
-const token_key = process.env.token_key;
-const whitelistedAPIs = ["/partners/signup"];
-const isAPIwhitelisted = (urlpath) => {
-  return whitelistedAPIs.includes(urlpath);
-};
 const verifyToken = (req, res, next) => {
-  if (isAPIwhitelisted(req.path)) {
+  if (whitelistedAPIs.includes(req.path)) {
     console.log(`${req.path} is whitelisted`);
   } else {
     const bearer_token = req.headers["authorization"];
