@@ -1,5 +1,5 @@
 const jwt = require("jsonwebtoken");
-const token_key = process.env.token_key || "development_token_key";
+const token_key = process.env.TOKEN_KEY || "development_token_key";
 const whitelistedAPIs = ["/partners/signup", "/partners/login"];
 
 const verifyToken = (req, res, next) => {
