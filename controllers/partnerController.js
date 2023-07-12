@@ -1,7 +1,9 @@
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const models = require("../models");
-const token_key = process.env.TOKEN_KEY || "development_token_key";
+const env = process.env.NODE_ENV || "development";
+const config = require("../config/credentials.json")[env];
+const token_key = config.TOKEN_KEY
 
 const signup = async (req, res) => {
   try {
