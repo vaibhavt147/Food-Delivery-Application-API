@@ -2,7 +2,7 @@ const jwt = require("jsonwebtoken");
 const env = process.env.NODE_ENV || "development";
 const config = require("../config/credentials.json")[env];
 const token_key = config.TOKEN_KEY;
-const whitelistedAPIs = ["/partners/signup", "/partners/login"];
+const whitelistedAPIs = ["/partners/signup", "/partners/login", "/healthcheck"];
 
 const verifyToken = (req, res, next) => {
   if (whitelistedAPIs.includes(req.path)) {

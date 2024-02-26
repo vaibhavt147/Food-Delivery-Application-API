@@ -52,7 +52,7 @@ const login = async (req, res) => {
           name: partner.name,
         },
         token_key,
-        { expiresIn: "5m" }
+        { expiresIn: "1h" }
       );
       return res.status(200).send(token);
     }
