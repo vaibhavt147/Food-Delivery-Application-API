@@ -1,8 +1,21 @@
 const express = require("express");
 const bodyParser = require("body-parser");
+const session = require("express-session");
+const Keycloak = require("keycloak-connect");
 require("dotenv").config();
+const memoryStore = new session.MemoryStore();
 const app = express();
 const port = process.env.PORT || 8080;
+
+const kcConfig = {
+  clientId: "myclient",
+  bearerOnly: true,
+  serverUrl: "http://localhost:8080",
+  realm: "myrealm",
+  realmPublicKey: "MIIBIjANB...",
+};
+
+const keycloak = new Keycloak({ store: memoryStore }, kcConfig);
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
